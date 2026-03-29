@@ -1,0 +1,40 @@
+name: Weekly Journal Digest
+
+on:
+  schedule:
+    # 每周一 UTC 01:00（北京/大阪时间 09:00）
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+
+jobs:
+  fetch-and-notify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install feedparser
+
+      - name: Run tracker
+        env:
+          EMAIL_SENDER:    ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD:  ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+        run: python fetch_and_notify.py
+
+      - name: Commit updated seen_articles.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add seen_articles.json
+          git diff --cached --quiet || git commit -m "chore: update seen articles [skip ci]"
+          git push
