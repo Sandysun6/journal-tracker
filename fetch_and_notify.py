@@ -15,7 +15,7 @@ from pathlib import Path
 # ── 期刊列表 ────────────────────────────────────────────────────────────────
 JOURNALS = [
     ("American Economic Review",               "https://www.aeaweb.org/journals/aer/rss"),
-    ("The Quarterly Journal of Economics",     "https://academic.oup.com/rss/site_5506/3367.xml"),
+    ("The Quarterly Journal of Economics",     "https://academic.oup.com/rss/site_5504/3365.xml"),
     ("Journal of Political Economy",           "https://www.journals.uchicago.edu/action/showFeed?type=etoc&feed=rss&jc=jpe"),
     ("The Review of Economic Studies",         "https://academic.oup.com/rss/site_5508/3369.xml"),
     ("The Review of Economics and Statistics", "https://direct.mit.edu/rest/rss"),
@@ -24,13 +24,16 @@ JOURNALS = [
     ("Journal of Labor Economics",             "https://www.journals.uchicago.edu/action/showFeed?type=etoc&feed=rss&jc=jole"),
     ("Journal of Development Economics",       "https://rss.sciencedirect.com/publication/science/03043878"),
     ("Journal of Public Economics",            "https://rss.sciencedirect.com/publication/science/00472727"),
-    ("The Economic Journal",                   "https://academic.oup.com/rss/site_5504/3365.xml"),
+    ("The Economic Journal",                   "https://onlinelibrary.wiley.com/feed/14680297/most-recent"),
     ("China Economic Review",                  "https://rss.sciencedirect.com/publication/science/10430121"),
     ("Journal of Financial Economics",         "https://rss.sciencedirect.com/publication/science/0304405X"),
     ("The Journal of Finance",                 "https://onlinelibrary.wiley.com/feed/15406261/most-recent"),
     ("Review of Financial Studies",            "https://academic.oup.com/rss/site_5510/3371.xml"),
     ("Review of Finance",                      "https://academic.oup.com/rss/site_5512/3373.xml"),
     ("Research Policy",                        "https://rss.sciencedirect.com/publication/science/00487333"),
+    ("Journal of Health Economics",            "https://rss.sciencedirect.com/publication/science/01676296"),
+    ("Health Economics",                       "https://onlinelibrary.wiley.com/feed/10991050/most-recent"),
+    ("Social Science & Medicine",              "https://rss.sciencedirect.com/publication/science/02779536"),
 ]
 
 # ── 配置（从环境变量/GitHub Secrets读取）────────────────────────────────────
