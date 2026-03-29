@@ -4,15 +4,17 @@
 
 ```
 journal-tracker/
-├── journal_tracker.py       # 主追踪器（19 个期刊）
-├── yifanxu.py               # 子追踪器（8 个经济学核心期刊）
-├── seen_articles.json        # 主追踪器已发送缓存
-├── seen_yifanxu.json         # 子追踪器已发送缓存（首次运行后自动生成）
+├── journal_tracker.py        # 【主程序】覆盖经济/金融/卫生经济学 19 个期刊
+├── yifanxu.py                # 【个性化子程序】为朋友定制，经济学核心 8 个期刊
+├── haihuang.py               # 【个性化子程序】为朋友定制，经济/社会/政治/金融/史 26 个期刊
+├── seen_articles.json         # 主程序缓存
+├── seen_yifanxu.json          # yifanxu 缓存（首次运行后自动生成）
+├── seen_haihuang.json         # haihuang 缓存（首次运行后自动生成）
 ├── requirements.txt
-├── NOTES.md                  # 本地进度文档（不同步 GitHub）
+├── NOTES.md                   # 本地进度文档（不同步 GitHub）
 ├── .github/workflows/
-│   └── weekly_digest.yml     # GitHub Actions 定时任务
-└── CLAUDE.md                 # 本文件
+│   └── weekly_digest.yml      # GitHub Actions 定时任务（三个脚本顺序运行）
+└── CLAUDE.md                  # 本文件
 ```
 
 ## 工作流规范
@@ -39,10 +41,12 @@ journal-tracker/
 
 ## 脚本规范
 
-- 两个脚本（`journal_tracker.py` / `yifanxu.py`）**独立维护，不共享代码**，保持各自完整可运行
-- 新增期刊：同时考虑是否需要加入两个脚本
+- 三个脚本**独立维护，不共享代码**，保持各自完整可运行
+- 主程序（`journal_tracker.py`）覆盖核心期刊；子程序为朋友个性化定制，期刊范围可与主程序重叠
+- 邮件标题统一以 `Journal Weekly Digest` 开头；测试模式标题以 `测试 · Journal Weekly Digest` 开头
 - 环境变量统一从 `os.environ` 读取，不硬编码敏感信息
-- 缓存文件名与脚本对应，不交叉引用
+- 缓存文件名与脚本对应（`seen_<scriptname>.json`），不交叉引用
+- 新增子程序时，参照现有子程序结构，并在 `weekly_digest.yml` 追加对应 step
 
 ## GitHub Secrets 一览
 
@@ -50,8 +54,9 @@ journal-tracker/
 |--------|------|------|
 | `EMAIL_SENDER` | 发件邮箱 | 两个脚本共用 |
 | `EMAIL_PASSWORD` | SMTP 授权码 | 两个脚本共用 |
-| `EMAIL_RECIPIENT` | 主追踪器收件地址 | `journal_tracker.py` |
-| `EMAIL_RECIPIENT_YIFAN` | 子追踪器收件地址 | `yifanxu.py` |
+| `EMAIL_RECIPIENT` | 主程序收件地址 | `journal_tracker.py` |
+| `EMAIL_RECIPIENT_YIFAN` | yifanxu 子程序收件地址 | `yifanxu.py` |
+| `EMAIL_RECIPIENT_HAIHUANG` | haihuang 子程序收件地址 | `haihuang.py` |
 
 新增脚本时，若需独立收件人，在 GitHub repo Settings → Secrets 中添加对应条目，并在 `weekly_digest.yml` 的 `env:` 块中传入。
 

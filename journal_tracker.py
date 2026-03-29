@@ -200,7 +200,7 @@ def build_html(new_articles: dict, week_str: str) -> str:
 
 def send_email(html: str, week_str: str, total: int):
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"[Journals] {total} new articles — {week_str}"
+    msg["Subject"] = f"Journal Weekly Digest · {total} new articles — {week_str}"
     msg["From"]    = SENDER
     msg["To"]      = ", ".join(RECIPIENTS)
     msg.attach(MIMEText(html, "html", "utf-8"))

@@ -26,12 +26,13 @@
 
 ## 脚本说明
 
-| 文件 | 用途 |
-|------|------|
-| `journal_tracker.py` | 主追踪器，覆盖全部 19 个期刊 |
-| `yifanxu.py` | 子追踪器，追踪 AER · QJE · Econometrica · RES · JPE · JDE · JLE · JHR，发送至独立收件箱 |
+| 文件 | 说明 | 期刊数 |
+|------|------|--------|
+| `journal_tracker.py` | **主程序**，覆盖经济/金融/卫生经济学全部期刊 | 19 |
+| `yifanxu.py` | 个性化子程序（为朋友定制），聚焦经济学核心期刊 | 8 |
+| `haihuang.py` | 个性化子程序（为朋友定制），覆盖经济/社会/政治/金融/经济史 | 26 |
 
-两个脚本独立维护各自的缓存文件（`seen_articles.json` / `seen_yifanxu.json`），互不干扰，每周同时运行。
+各脚本独立维护缓存文件，互不干扰，每周同时运行。子程序作为扩展示例，Fork 后可按需删除或仿照添加。
 
 ---
 
@@ -50,13 +51,15 @@
 
 ### 第三步：配置 GitHub Secrets
 
-进入你的 Fork 仓库 → **Settings → Secrets and variables → Actions → New repository secret**，添加三个 Secret：
+进入你的 Fork 仓库 → **Settings → Secrets and variables → Actions → New repository secret**，添加以下 Secret（子程序 Secret 按需添加）：
 
-| Secret 名称 | 填写内容 |
-|---|---|
-| `EMAIL_SENDER` | 163 邮箱地址，如 `yourname@163.com` |
-| `EMAIL_PASSWORD` | 第二步获得的 SMTP 授权码 |
-| `EMAIL_RECIPIENT` | 收件地址，多个地址用英文逗号分隔，如 `a@gmail.com,b@example.com` |
+| Secret 名称 | 填写内容 | 必填 |
+|---|---|---|
+| `EMAIL_SENDER` | 163 邮箱地址，如 `yourname@163.com` | 是 |
+| `EMAIL_PASSWORD` | 第二步获得的 SMTP 授权码 | 是 |
+| `EMAIL_RECIPIENT` | 主程序收件地址，多地址用英文逗号分隔 | 是 |
+| `EMAIL_RECIPIENT_YIFAN` | yifanxu 子程序收件地址 | 使用该子程序时 |
+| `EMAIL_RECIPIENT_HAIHUANG` | haihuang 子程序收件地址 | 使用该子程序时 |
 
 ### 第四步：手动触发一次测试
 
@@ -127,3 +130,6 @@ CROSSREF_JOURNALS = [
 
 **Q：如何只保留自己关注的期刊？**
 直接编辑 `journal_tracker.py`，删除不需要的行后提交即可。
+
+**Q：如何添加自己的个性化子程序？**
+参照 `yifanxu.py` 或 `haihuang.py` 新建脚本，修改期刊列表和收件人 Secret 名称，再在 `weekly_digest.yml` 中加一个 step 即可。

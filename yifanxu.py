@@ -223,11 +223,11 @@ def main():
     html = build_html(articles, week_str)
 
     if TEST_MODE:
-        subject = f"测试 · Journal Digest · {total} articles — {week_str}"
+        subject = f"测试 · Journal Weekly Digest · {total} articles — {week_str}"
         send_email(html, subject)
         print("测试完成，缓存未更新（下次正式运行仍可获取全量内容）。")
     else:
-        subject = f"[Journals] {total} new articles — {week_str}"
+        subject = f"Journal Weekly Digest · {total} new articles — {week_str}"
         for items in articles.values():
             for a in items:
                 seen.add(a["uid"])
