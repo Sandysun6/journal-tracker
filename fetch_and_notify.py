@@ -30,7 +30,6 @@ JOURNALS = [
     ("The Journal of Finance",                 "https://onlinelibrary.wiley.com/feed/15406261/most-recent"),
     ("Review of Financial Studies",            "https://academic.oup.com/rss/site_5510/3371.xml"),
     ("Review of Finance",                      "https://academic.oup.com/rss/site_5512/3373.xml"),
-    ("Research Policy",                        "https://rss.sciencedirect.com/publication/science/00487333"),
     ("Journal of Health Economics",            "https://rss.sciencedirect.com/publication/science/01676296"),
     ("Health Economics",                       "https://onlinelibrary.wiley.com/feed/10991050/most-recent"),
     ("Social Science & Medicine",              "https://rss.sciencedirect.com/publication/science/02779536"),
@@ -59,7 +58,6 @@ def fetch_new_articles(seen: set) -> dict:
     import re
     import time
     results = {}
-    cutoff = datetime.now(timezone.utc).timestamp() - 7 * 24 * 3600  # 过去7天
     for name, url in JOURNALS:
         try:
             feed = feedparser.parse(url)
@@ -67,10 +65,7 @@ def fetch_new_articles(seen: set) -> dict:
             for entry in feed.entries:
                 uid = entry.get("id") or entry.get("link", "")
                 if uid and uid not in seen:
-                    # 检查发布时间，过滤7天以外的文章
                     published = entry.get("published_parsed") or entry.get("updated_parsed")
-                    if published and time.mktime(published) < cutoff:
-                        continue
                     pub_str = ""
                     if published:
                         pub_str = datetime(*published[:3]).strftime("%Y-%m-%d")
