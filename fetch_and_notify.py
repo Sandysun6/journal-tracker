@@ -68,6 +68,9 @@ def fetch_new_articles(seen: set) -> dict:
                     published = entry.get("published_parsed") or entry.get("updated_parsed")
                     if published and time.mktime(published) < cutoff:
                         continue
+                    pub_str = ""
+                    if published:
+                        pub_str = datetime(*published[:3]).strftime("%Y-%m-%d")
                     authors = ""
                     if hasattr(entry, "authors"):
                         authors = ", ".join(a.get("name", "") for a in entry.authors)
@@ -82,6 +85,7 @@ def fetch_new_articles(seen: set) -> dict:
                         "link":     entry.get("link", ""),
                         "authors":  authors,
                         "abstract": summary,
+                        "date":     pub_str,
                         "uid":      uid,
                     })
             if new_items:
@@ -106,6 +110,7 @@ def build_html(new_articles: dict, week_str: str) -> str:
                 <div style="font-size:15px; font-weight:600; margin-bottom:4px;">
                   <a href="{a['link']}" style="color:#1a56db; text-decoration:none;">{a['title']}</a>
                 </div>
+                {"<div style='font-size:12px; color:#888; margin-bottom:2px;'>" + a['date'] + "</div>" if a['date'] else ""}
                 {"<div style='font-size:12px; color:#666; margin-bottom:4px;'>" + a['authors'] + "</div>" if a['authors'] else ""}
                 {"<div style='font-size:12px; color:#444; line-height:1.5;'>" + a['abstract'] + "</div>" if a['abstract'] else ""}
               </td>
