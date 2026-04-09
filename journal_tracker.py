@@ -46,6 +46,7 @@ CROSSREF_JOURNALS = [
 # ── 配置（从环境变量/GitHub Secrets读取）────────────────────────────────────
 SEEN_FILE        = Path("seen_articles.json")
 FAIL_COUNTS_FILE = Path("fail_counts_journal_tracker.json")
+OUTPUT_DIR       = Path(os.environ.get("DIGEST_OUTPUT_DIR", "outputs"))
 SMTP_HOST        = "smtp.163.com"
 SMTP_PORT        = 465
 SENDER           = os.environ["EMAIL_SENDER"]
@@ -78,6 +79,56 @@ def save_fail_counts(counts: dict):
     FAIL_COUNTS_FILE.write_text(json.dumps(counts, indent=2, ensure_ascii=False))
 
 
+def save_weekly_digest(
+    new_articles: dict,
+    week_str: str,
+    issue_num: int,
+    generated_at: datetime,
+    fetch_errors: dict,
+):
+    output_dir = OUTPUT_DIR
+    history_dir = output_dir / "history"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    history_dir.mkdir(parents=True, exist_ok=True)
+
+    run_date = generated_at.strftime("%Y-%m-%d")
+    total = sum(len(items) for items in new_articles.values())
+    digest = {
+        "generated_at_utc": generated_at.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "run_date": run_date,
+        "week_label": week_str,
+        "issue_num": issue_num,
+        "item_count": total,
+        "journal_count": len(new_articles),
+        "journals": {},
+        "errors": fetch_errors,
+    }
+
+    for journal, items in new_articles.items():
+        digest["journals"][journal] = [
+            {
+                "journal": journal,
+                "title": item["title"],
+                "authors": item["authors"],
+                "authors_list": item.get("authors_list", []),
+                "date": item["date"],
+                "abstract": item["abstract"],
+                "doi": item.get("doi", ""),
+                "url": item["link"],
+                "uid": item["uid"],
+                "source_type": item.get("source_type", ""),
+            }
+            for item in items
+        ]
+
+    latest_path = output_dir / "latest.json"
+    history_path = history_dir / f"{run_date}.json"
+    payload = json.dumps(digest, indent=2, ensure_ascii=False)
+    latest_path.write_text(payload, encoding="utf-8")
+    history_path.write_text(payload, encoding="utf-8")
+    print(f"Weekly digest saved to {latest_path} and {history_path}")
+
+
 # ── 抓取 RSS ──────────────────────────────────────────────────────────────────
 def fetch_new_articles(seen: set) -> tuple:
     results, errors = {}, {}
@@ -95,18 +146,24 @@ def fetch_new_articles(seen: set) -> tuple:
                     if published and datetime(*published[:6]) < cutoff.replace(tzinfo=None):
                         continue
                     authors = ""
+                    author_list = []
                     if hasattr(entry, "authors"):
-                        authors = ", ".join(a.get("name", "") for a in entry.authors)
+                        author_list = [a.get("name", "").strip() for a in entry.authors if a.get("name", "").strip()]
+                        authors = ", ".join(author_list)
                     elif hasattr(entry, "author"):
                         authors = entry.author
+                        author_list = [entry.author.strip()] if entry.author.strip() else []
                     summary = re.sub(r"<[^>]+>", "", entry.get("summary", "")).strip()
                     new_items.append({
                         "title":    entry.get("title", "(no title)").strip(),
                         "link":     entry.get("link", ""),
                         "authors":  authors,
+                        "authors_list": author_list,
                         "abstract": summary,
                         "date":     pub_str,
                         "uid":      uid,
+                        "doi":      entry.get("prism_doi", ""),
+                        "source_type": "rss",
                     })
             if new_items:
                 results[name] = new_items
@@ -144,12 +201,19 @@ def fetch_crossref_articles(seen: set) -> tuple:
                     f"{a.get('given','')} {a.get('family','')}".strip()
                     for a in item.get("author", [])[:5]
                 )
+                authors_list = [
+                    f"{a.get('given', '')} {a.get('family', '')}".strip()
+                    for a in item.get("author", [])[:5]
+                    if f"{a.get('given', '')} {a.get('family', '')}".strip()
+                ]
                 abstract = re.sub(r"<[^>]+>", "", item.get("abstract", "")).strip()
                 pd = item.get("published", {}).get("date-parts", [[]])[0]
                 pub_str = "-".join(str(p).zfill(2) for p in pd) if pd else ""
                 new_items.append({
                     "title": title, "link": link, "authors": authors,
+                    "authors_list": authors_list,
                     "abstract": abstract, "date": pub_str, "uid": uid,
+                    "doi": uid, "source_type": "crossref",
                 })
             if new_items:
                 results[name] = new_items
@@ -281,8 +345,9 @@ def send_alert(triggered: dict):
 
 # ── 主流程 ────────────────────────────────────────────────────────────────────
 def main():
-    week_str  = datetime.now(timezone.utc).strftime("Week of %Y-%m-%d")
-    issue_num = (datetime.now(timezone.utc).date() - START_DATE).days // 7 + 1
+    generated_at = datetime.now(timezone.utc)
+    week_str  = generated_at.strftime("Week of %Y-%m-%d")
+    issue_num = (generated_at.date() - START_DATE).days // 7 + 1
     print(f"=== Journal Tracker · {week_str} · 第{issue_num}期 ===")
     seen        = load_seen()
     fail_counts = load_fail_counts()
@@ -310,6 +375,7 @@ def main():
 
     total = sum(len(v) for v in new_articles.values())
     print(f"New articles found: {total}")
+    save_weekly_digest(new_articles, week_str, issue_num, generated_at, all_errors)
     if total == 0:
         print("Nothing new this week, skipping email.")
         return

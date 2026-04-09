@@ -1,6 +1,7 @@
 # Journal RSS Tracker
 
 每周自动追踪经济学、金融学、经济史等领域期刊的最新文章，通过邮件发送摘要。
+同时输出结构化 `weekly_digest.json`，便于本地做关键词筛选并导入 Zotero。
 完全运行在 GitHub Actions 上，**免费、无需服务器、无需本地运行**。
 
 ---
@@ -11,6 +12,7 @@
 - 仅推送过去 7 天内发表、且上次运行后新出现的文章，不重复、不遗漏
 - 邮件标题包含期号（第1期、第2期……），自动按发送日期递增计算
 - 邮件包含：文章标题（可点击跳转）、作者、发布日期、完整摘要
+- 每次运行额外写出 `outputs/latest.json` 和 `outputs/history/YYYY-MM-DD.json`
 - 支持多收件人
 - 内置 RSS 失效检测：某期刊连续 5 周抓取失败，自动发送告警邮件（含错误信息）
 - （计划中）主题筛选高亮：按关键词将特定主题文章置顶显示，支持多主题分组（详见下方）
@@ -32,6 +34,8 @@
 | 文件 | 说明 | 期刊数 |
 |------|------|--------|
 | `journal_tracker.py` | **主程序**，覆盖经济/金融/经济史等领域期刊 | 16 |
+| `scripts/sync_digest_to_zotero.py` | 本地读取 `weekly_digest.json`，按关键词筛选并导入 Zotero | - |
+| `screening_rules.toml` | 本地关键词筛选规则与 Zotero 路由配置 | - |
 | `yifanxu.py` | 个性化子程序（为朋友定制），聚焦经济学核心期刊 | 8 |
 | `haihuang.py` | 个性化子程序（为朋友定制），覆盖经济/社会/政治/金融/经济史 | 26 |
 | `jiahuitan.py` | 个性化子程序（为朋友定制），覆盖经济/公共/卫生经济学等领域期刊 | 15 |
@@ -144,8 +148,99 @@ CROSSREF_JOURNALS = [
 1. GitHub Actions 按计划触发脚本
 2. 脚本从各期刊 RSS/CrossRef 拉取文章列表
 3. 过滤掉 7 天前发表的文章，再与缓存文件对比，筛出本周新增文章
-4. 将新文章整理成 HTML 邮件，通过 163 SMTP 发送
-5. 更新缓存并提交回仓库，确保下次运行不重复
+4. 将新文章写入结构化 `JSON` 文件：`outputs/latest.json` 与 `outputs/history/YYYY-MM-DD.json`
+5. 将新文章整理成 HTML 邮件，通过 163 SMTP 发送
+6. 更新缓存并提交回仓库，确保下次运行不重复
+
+---
+
+## 本地筛选并导入 Zotero
+
+如果你希望在邮件之外继续做自动化处理，可以直接读取仓库里的 `outputs/latest.json`，按标题和摘要筛选后导入 Zotero 的 `00_Read Soon` 集合。
+
+仓库已附带：
+
+- `screening_rules.toml`
+- `scripts/sync_digest_to_zotero.py`
+
+### 1. 准备 Zotero API
+
+本地导入脚本使用：
+
+- 本地 `zotero.sqlite` 只读定位集合、做去重
+- Zotero Web API 安全写入新条目
+
+请先准备：
+
+1. `ZOTERO_API_KEY`
+2. `ZOTERO_LIBRARY_ID`
+3. 可选：`ZOTERO_LIBRARY_TYPE`
+   默认是 `user`
+
+### 2. 编辑关键词规则
+
+打开 `screening_rules.toml`，修改你关心的主题关键词。
+
+每个主题支持：
+
+- `must_any`
+- `must_all`
+- `exclude`
+- `journal_allowlist`
+- `priority_score`
+
+匹配范围默认是：
+
+- `title`
+- `abstract`
+
+### 3. 先做 dry run
+
+```bash
+export ZOTERO_LIBRARY_ID="你的 Zotero user ID"
+export ZOTERO_API_KEY="你的 Zotero API key"
+
+python3 scripts/sync_digest_to_zotero.py --dry-run
+```
+
+这一步只会：
+
+- 读取 `outputs/latest.json`
+- 按关键词筛选
+- 用本地 Zotero 库做去重检查
+- 打印将要导入的文章清单
+
+不会真正写入 Zotero。
+
+### 4. 实际导入 Zotero
+
+```bash
+python3 scripts/sync_digest_to_zotero.py
+```
+
+默认会导入到：
+
+- `00_Inbox_RSS / 00_Read Soon`
+
+也可以临时覆盖目标集合：
+
+```bash
+python3 scripts/sync_digest_to_zotero.py \
+  --collection-path "00_Inbox_RSS/00_Read Soon"
+```
+
+### 5. 导入逻辑说明
+
+- 标题和摘要命中关键词的文章才会被保留
+- 会先按 `doi`、`url`、标准化标题去重
+- 若文章已在 Zotero 中存在，则跳过重复导入
+- 新导入条目会自动附加 tags，例如：
+  - `from-journal-tracker`
+  - `auto-screened`
+  - `week-YYYY-MM-DD`
+  - `topic:你的主题名`
+
+当前这一步只导入元数据，不自动下载 PDF。PDF 自动获取与附件上传建议作为下一步单独实现，这样更稳，也更方便排查问题。
 
 ---
 

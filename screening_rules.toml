@@ -1,0 +1,49 @@
+version = 1
+
+[global]
+case_sensitive = false
+search_fields = ["title", "abstract"]
+dedupe_by = ["doi", "url", "normalized_title"]
+
+[topics.china_economy]
+label = "中国经济"
+must_any = ["china", "chinese", "hukou", "local government", "state-owned"]
+must_all = []
+exclude = ["book review", "editorial", "frontmatter", "backmatter"]
+journal_allowlist = []
+
+[topics.china_economy.priority_score]
+china = 2
+hukou = 3
+state-owned = 2
+
+[topics.labor_and_migration]
+label = "劳动与流动"
+must_any = ["labor", "wage", "employment", "unemployment", "migration", "mobility"]
+must_all = []
+exclude = ["book review", "editorial", "frontmatter", "backmatter"]
+journal_allowlist = []
+
+[topics.labor_and_migration.priority_score]
+labor = 2
+migration = 3
+mobility = 2
+
+[topics.spillover_and_productivity]
+label = "溢出与生产率"
+must_any = ["spillover", "productivity", "agglomeration", "knowledge diffusion"]
+must_all = []
+exclude = ["book review", "editorial", "frontmatter", "backmatter"]
+journal_allowlist = ["Econometrica", "The Quarterly Journal of Economics", "Journal of Political Economy"]
+
+[topics.spillover_and_productivity.priority_score]
+spillover = 3
+productivity = 2
+agglomeration = 2
+
+[routing]
+zotero_collection_path = "00_Inbox_RSS/00_Read Soon"
+add_tags = ["from-journal-tracker", "auto-screened"]
+add_week_tag = true
+skip_if_no_topic_match = true
+allow_metadata_only_when_pdf_missing = true
