@@ -95,6 +95,57 @@ tariff = 3
 offshoring = 2
 fdi = 2
 
+[topics.supply_and_industrial_chains]
+label = "供应链与产业链"
+must_any = [
+  "supply chain",
+  "supply chains",
+  "global supply chain",
+  "supply disruption",
+  "supply disruptions",
+  "production network",
+  "production networks",
+  "firm-to-firm network",
+  "firm to firm network",
+  "customer-supplier relationship",
+  "customer supplier relationship",
+  "input-output linkages",
+  "intermediate inputs",
+  "value chain",
+  "global value chain",
+  "domestic value added",
+  "foreign value added",
+  "industrial chain",
+  "industry chain",
+  "upstream",
+  "downstream",
+  "vertical integration",
+  "buyer-supplier",
+  "supplier",
+  "suppliers",
+  "reshoring",
+]
+must_all = []
+exclude = ["book review", "editorial", "frontmatter", "backmatter"]
+journal_allowlist = []
+
+[topics.supply_and_industrial_chains.priority_score]
+"supply chain" = 4
+"global supply chain" = 4
+"supply disruption" = 4
+"production network" = 3
+"firm-to-firm network" = 3
+"customer-supplier relationship" = 3
+"input-output linkages" = 3
+"intermediate inputs" = 3
+"global value chain" = 3
+"domestic value added" = 3
+"foreign value added" = 3
+"industrial chain" = 4
+"vertical integration" = 3
+reshoring = 3
+supplier = 2
+
 [topics.urban_and_spatial]
 label = "城市与空间经济"
 must_any = [
