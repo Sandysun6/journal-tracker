@@ -1,0 +1,303 @@
+{
+  "generated_at_utc": "2026-04-09T10:48:20Z",
+  "run_date": "2026-04-09",
+  "week_label": "Week of 2026-04-09",
+  "issue_num": 2,
+  "item_count": 23,
+  "journal_count": 5,
+  "journals": {
+    "Journal of Political Economy": [
+      {
+        "journal": "Journal of Political Economy",
+        "title": "Front Matter",
+        "authors": "",
+        "authors_list": [],
+        "date": "2026-04-06",
+        "abstract": "Journal of Political Economy, Volume 134, Issue 4, April 2026.",
+        "doi": "10.1086/741633",
+        "url": "https://www.journals.uchicago.edu/doi/abs/10.1086/741633?af=R",
+        "uid": "https://www.journals.uchicago.edu/doi/abs/10.1086/741633?af=R",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Political Economy",
+        "title": "JPE Turnaround Times",
+        "authors": "",
+        "authors_list": [],
+        "date": "2026-04-06",
+        "abstract": "Journal of Political Economy, Volume 134, Issue 4, Page 1306-1306, April 2026.",
+        "doi": "10.1086/741286",
+        "url": "https://www.journals.uchicago.edu/doi/abs/10.1086/741286?af=R",
+        "uid": "https://www.journals.uchicago.edu/doi/abs/10.1086/741286?af=R",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Political Economy",
+        "title": "Recent Referees",
+        "authors": "",
+        "authors_list": [],
+        "date": "2026-04-06",
+        "abstract": "Journal of Political Economy, Volume 134, Issue 4, April 2026.",
+        "doi": "10.1086/741634",
+        "url": "https://www.journals.uchicago.edu/doi/abs/10.1086/741634?af=R",
+        "uid": "https://www.journals.uchicago.edu/doi/abs/10.1086/741634?af=R",
+        "source_type": "rss"
+      }
+    ],
+    "Journal of Development Economics": [
+      {
+        "journal": "Journal of Development Economics",
+        "title": "Minimum wages, low-wage workers, and compliance under imperfect enforcement",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: June 2026Source: Journal of Development Economics, Volume 182Author(s): Nicolás González-Pampillón, Javier Vázquez-Grenno",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0304387826000751?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0304387826000751",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Development Economics",
+        "title": "Product quality, the scope of export destinations and skill demand for sustainable development: An investigation for China<sup>@</sup>",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 8 April 2026Source: Journal of Development EconomicsAuthor(s): Zhuangxiong Yu, Yang Yang, Jiemiao Dong, Pundarik Mukhopadhaya",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0304387826000775?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0304387826000775",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Development Economics",
+        "title": "Desired Fertility, Realized Fertility and the Effects of China’s Universal Two-Child Policy*",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 7 April 2026Source: Journal of Development EconomicsAuthor(s): Hanming Fang, Chang Liu",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0304387826000799?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0304387826000799",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Development Economics",
+        "title": "Chat over coffee? Diffusion of agronomic practices and market spillovers in Rwanda",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 1 April 2026Source: Journal of Development EconomicsAuthor(s): Esther Duflo, Daniel Keniston, Tavneet Suri, Céline Zipfel",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0304387826000167?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0304387826000167",
+        "source_type": "rss"
+      }
+    ],
+    "Journal of Public Economics": [
+      {
+        "journal": "Journal of Public Economics",
+        "title": "Access to credit reduces the value of insurance",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: June 2026Source: Journal of Public Economics, Volume 258Author(s): Sonia Jaffe, Anup Malani, Julian Reif",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0047272726000691?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0047272726000691",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Public Economics",
+        "title": "Winters of discontent",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: May 2026Source: Journal of Public Economics, Volume 257Author(s): Casey J. Wichman",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0047272726000733?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0047272726000733",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Public Economics",
+        "title": "Elections that inspire: Effects of Black mayors on educational attainment",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: May 2026Source: Journal of Public Economics, Volume 257Author(s): Jorge Ikawa, Clarice Martins, Pedro C. Sant’Anna, Rogerio Santarrosa",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0047272726000757?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0047272726000757",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Public Economics",
+        "title": "Corporate taxpayer responses to size-based enforcement and disclosure thresholds",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: May 2026Source: Journal of Public Economics, Volume 257Author(s): Jason DeBacker, Erin Towery, Bibek Adhikari",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0047272726000721?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0047272726000721",
+        "source_type": "rss"
+      },
+      {
+        "journal": "Journal of Public Economics",
+        "title": "Extreme temperatures, physical activity, and adaptation",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: May 2026Source: Journal of Public Economics, Volume 257Author(s): Robert I. Harris",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0047272726000745?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S0047272726000745",
+        "source_type": "rss"
+      }
+    ],
+    "China Economic Review": [
+      {
+        "journal": "China Economic Review",
+        "title": "Do bankruptcy judicial reforms improve small and medium enterprises' investment efficiency? Evidence from China",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 8 April 2026Source: China Economic ReviewAuthor(s): Lulu Di, Qiurui Mou",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000568?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000568",
+        "source_type": "rss"
+      },
+      {
+        "journal": "China Economic Review",
+        "title": "From vocational high school to higher vocational education: Effects on early career earnings and occupations",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 7 April 2026Source: China Economic ReviewAuthor(s): Sihang Rao, Denise Hare, Hongmei Yi",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000507?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000507",
+        "source_type": "rss"
+      },
+      {
+        "journal": "China Economic Review",
+        "title": "Can green mergers and acquisitions drive firms' transition to green exports? Evidence from China's manufacturing sector",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 6 April 2026Source: China Economic ReviewAuthor(s): Rui Long, Zhaobin Fan",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000544?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000544",
+        "source_type": "rss"
+      },
+      {
+        "journal": "China Economic Review",
+        "title": "A proposition of lose-lose: Detrimental consequences of trade wars",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 6 April 2026Source: China Economic ReviewAuthor(s): Wan-Jung Cheng, Ping Wang, Shin-Ru Yang",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000556?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000556",
+        "source_type": "rss"
+      },
+      {
+        "journal": "China Economic Review",
+        "title": "Corrigendum to ‘Innovation at crossroads: The effect of merger and acquisition on inventors’ creativity’ [China Economic Review 97 (2026) 102692]",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 2 April 2026Source: China Economic ReviewAuthor(s): Xiaohua Bao, Wen Ruan, Yaning Wei, Wentao Wu",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000489?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000489",
+        "source_type": "rss"
+      },
+      {
+        "journal": "China Economic Review",
+        "title": "The child penalty in the rental housing market: Do landlords discriminate couples with children?",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: April 2026Source: China Economic Review, Volume 97Author(s): Ziming Liu, Xinrui Wu, Zihan Yu, Zhaoyingzi Dong, Jens Rommel",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000519?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000519",
+        "source_type": "rss"
+      },
+      {
+        "journal": "China Economic Review",
+        "title": "Vertical integration and social welfare: Evidence from China's electric vehicle industry",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: April 2026Source: China Economic Review, Volume 97Author(s): Guodong Li, Yong Tan, Ying Zhu",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000490?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000490",
+        "source_type": "rss"
+      },
+      {
+        "journal": "China Economic Review",
+        "title": "Imports of key capital goods and firms’ span of production stages: A global value chain perspective",
+        "authors": "",
+        "authors_list": [],
+        "date": "",
+        "abstract": "Publication date: Available online 1 April 2026Source: China Economic ReviewAuthor(s): Liang Zhang, Hengrui Zhou, Lamei Wu, Jialin Xu",
+        "doi": "",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1043951X26000477?dgcid=rss_sd_all",
+        "uid": "https://www.sciencedirect.com/science/article/pii/S1043951X26000477",
+        "source_type": "rss"
+      }
+    ],
+    "The Journal of Finance": [
+      {
+        "journal": "The Journal of Finance",
+        "title": "The (Missing) Relation between Acquisition Announcement Returns and Value Creation",
+        "authors": "ITZHAK BEN‐DAVID, \nUTPAL BHATTACHARYA, \nRUIDI HUANG, \nSTACEY JACOBSEN",
+        "authors_list": [
+          "ITZHAK BEN‐DAVID, \nUTPAL BHATTACHARYA, \nRUIDI HUANG, \nSTACEY JACOBSEN"
+        ],
+        "date": "2026-04-08",
+        "abstract": "The Journal of Finance, EarlyView.",
+        "doi": "10.1111/jofi.70038",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jofi.70038?af=R",
+        "uid": "10.1111/jofi.70038",
+        "source_type": "rss"
+      },
+      {
+        "journal": "The Journal of Finance",
+        "title": "Deposit Franchise Runs",
+        "authors": "ITAMAR DRECHSLER, \nALEXI SAVOV, \nPHILIPP SCHNABL, \nOLIVIER WANG",
+        "authors_list": [
+          "ITAMAR DRECHSLER, \nALEXI SAVOV, \nPHILIPP SCHNABL, \nOLIVIER WANG"
+        ],
+        "date": "2026-04-07",
+        "abstract": "The Journal of Finance, EarlyView.",
+        "doi": "10.1111/jofi.70034",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jofi.70034?af=R",
+        "uid": "10.1111/jofi.70034",
+        "source_type": "rss"
+      },
+      {
+        "journal": "The Journal of Finance",
+        "title": "Size, Returns, and Value: Do Private Equity Firms Allocate Capital According to Manager Skill?",
+        "authors": "REINER BRAUN, \nNILS DORAU, \nTIM JENKINSON, \nDANIEL URBAN",
+        "authors_list": [
+          "REINER BRAUN, \nNILS DORAU, \nTIM JENKINSON, \nDANIEL URBAN"
+        ],
+        "date": "2026-04-03",
+        "abstract": "The Journal of Finance, EarlyView.",
+        "doi": "10.1111/jofi.70036",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jofi.70036?af=R",
+        "uid": "10.1111/jofi.70036",
+        "source_type": "rss"
+      }
+    ]
+  },
+  "errors": {}
+}
