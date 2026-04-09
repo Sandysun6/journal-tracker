@@ -5,41 +5,144 @@ case_sensitive = false
 search_fields = ["title", "abstract"]
 dedupe_by = ["doi", "url", "normalized_title"]
 
-[topics.china_economy]
-label = "中国经济"
-must_any = ["china", "chinese", "hukou", "local government", "state-owned"]
+[topics.innovation_and_knowledge]
+label = "创新与知识扩散"
+must_any = [
+  "innovation",
+  "innovative",
+  "knowledge spillover",
+  "knowledge diffusion",
+  "technology diffusion",
+  "technology adoption",
+  "patent",
+  "patents",
+  "inventor",
+  "inventors",
+  "r&d",
+  "research and development",
+  "technology",
+  "technological change",
+]
 must_all = []
 exclude = ["book review", "editorial", "frontmatter", "backmatter"]
 journal_allowlist = []
 
-[topics.china_economy.priority_score]
-china = 2
-hukou = 3
-state-owned = 2
-
-[topics.labor_and_migration]
-label = "劳动与流动"
-must_any = ["labor", "wage", "employment", "unemployment", "migration", "mobility"]
-must_all = []
-exclude = ["book review", "editorial", "frontmatter", "backmatter"]
-journal_allowlist = []
-
-[topics.labor_and_migration.priority_score]
-labor = 2
-migration = 3
-mobility = 2
+[topics.innovation_and_knowledge.priority_score]
+innovation = 3
+"knowledge spillover" = 4
+"knowledge diffusion" = 3
+"technology diffusion" = 3
+"technology adoption" = 2
+patent = 2
+"r&d" = 2
 
 [topics.spillover_and_productivity]
 label = "溢出与生产率"
-must_any = ["spillover", "productivity", "agglomeration", "knowledge diffusion"]
+must_any = [
+  "spillover",
+  "spillovers",
+  "productivity",
+  "tfp",
+  "agglomeration",
+  "cluster",
+  "clusters",
+  "knowledge diffusion",
+  "learning by exporting",
+  "technology transfer",
+]
 must_all = []
 exclude = ["book review", "editorial", "frontmatter", "backmatter"]
-journal_allowlist = ["Econometrica", "The Quarterly Journal of Economics", "Journal of Political Economy"]
+journal_allowlist = []
 
 [topics.spillover_and_productivity.priority_score]
 spillover = 3
 productivity = 2
 agglomeration = 2
+"technology transfer" = 2
+"learning by exporting" = 3
+
+[topics.trade_and_globalization]
+label = "国际贸易与全球化"
+must_any = [
+  "trade",
+  "international trade",
+  "export",
+  "exports",
+  "import",
+  "imports",
+  "tariff",
+  "tariffs",
+  "globalization",
+  "global value chain",
+  "value chain",
+  "supply chain",
+  "offshoring",
+  "multinational",
+  "fdi",
+  "foreign direct investment",
+  "comparative advantage",
+]
+must_all = []
+exclude = ["book review", "editorial", "frontmatter", "backmatter"]
+journal_allowlist = []
+
+[topics.trade_and_globalization.priority_score]
+trade = 2
+export = 2
+imports = 2
+tariff = 3
+"global value chain" = 3
+offshoring = 2
+fdi = 2
+
+[topics.urban_and_spatial]
+label = "城市与空间经济"
+must_any = [
+  "urban",
+  "city",
+  "cities",
+  "urbanization",
+  "spatial",
+  "geography",
+  "agglomeration",
+  "cluster",
+  "local labor market",
+  "neighborhood",
+  "place-based",
+]
+must_all = []
+exclude = ["book review", "editorial", "frontmatter", "backmatter"]
+journal_allowlist = []
+
+[topics.urban_and_spatial.priority_score]
+urban = 2
+city = 2
+cities = 2
+urbanization = 3
+agglomeration = 3
+spatial = 2
+
+[topics.china_related]
+label = "中国相关"
+must_any = [
+  "china",
+  "chinese",
+  "china trade",
+  "china shock",
+  "hukou",
+  "local government",
+  "state-owned",
+]
+must_all = []
+exclude = ["book review", "editorial", "frontmatter", "backmatter"]
+journal_allowlist = []
+
+[topics.china_related.priority_score]
+china = 2
+chinese = 2
+"china shock" = 3
+hukou = 3
+"state-owned" = 2
 
 [routing]
 zotero_collection_path = "00_Inbox_RSS/00_Read Soon"
