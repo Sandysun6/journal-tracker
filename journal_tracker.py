@@ -29,6 +29,7 @@ JOURNALS = [
     ("Journal of Population Economics",                "https://link.springer.com/search.rss?facet-content-type=Article&facet-journal-id=148&channel-name=Journal+of+Population+Economics"),
     # 中国经济
     # 金融
+    ("Journal of International Economics",            "https://rss.sciencedirect.com/publication/science/00221996"),
     ("Journal of Financial Economics",                 "https://rss.sciencedirect.com/publication/science/0304405X"),
     ("The Journal of Finance",                         "https://onlinelibrary.wiley.com/feed/15406261/most-recent"),
     ("Review of Financial Studies",                    "https://academic.oup.com/rss/site_5510/3371.xml"),
